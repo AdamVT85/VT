@@ -1,34 +1,75 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { client } from '@/lib/sanity'
 
-const destinations = [
-  { name: 'Spain', villaCount: 145, image: 'https://via.placeholder.com/600x400/c07d47/ffffff?text=Spain', slug: 'spain' },
-  { name: 'France', villaCount: 98, image: 'https://via.placeholder.com/600x400/c07d47/ffffff?text=France', slug: 'france' },
-  { name: 'Italy', villaCount: 112, image: 'https://via.placeholder.com/600x400/c07d47/ffffff?text=Italy', slug: 'italy' },
-  { name: 'Greece', villaCount: 87, image: 'https://via.placeholder.com/600x400/c07d47/ffffff?text=Greece', slug: 'greece' },
-  { name: 'Portugal', villaCount: 64, image: 'https://via.placeholder.com/600x400/c07d47/ffffff?text=Portugal', slug: 'portugal' },
-  { name: 'Croatia', villaCount: 45, image: 'https://via.placeholder.com/600x400/c07d47/ffffff?text=Croatia', slug: 'croatia' },
-]
+async function getDestinations() {
+  try {
+    const destinations = await client.fetch(`*[_type == "destination" && featured == true] | order(name asc){
+      _id,
+      name,
+      slug,
+      description,
+      villaCount,
+      "imageUrl": image.asset->url
+    }`)
+    return destinations
+  } catch (error) {
+    console.error('Error fetching destinations:', error)
+    return []
+  }
+}
 
-export default function DestinationsGrid() {
+export default async function DestinationsGrid() {
+  const destinations = await getDestinations()
+
+  // Fallback mock data if Sanity has no data
+  const mockDestinations = [
+    {
+      _id: '1',
+      name: 'Spain',
+      slug: { current: 'spain' },
+      villaCount: 145,
+      imageUrl: 'https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=800&h=600&fit=crop'
+    },
+    {
+      _id: '2',
+      name: 'France',
+      slug: { current: 'france' },
+      villaCount: 98,
+      imageUrl: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&h=600&fit=crop'
+    },
+    {
+      _id: '3',
+      name: 'Italy',
+      slug: { current: 'italy' },
+      villaCount: 112,
+      imageUrl: 'https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=800&h=600&fit=crop'
+    },
+  ]
+
+  const displayDestinations = destinations.length > 0 ? destinations : mockDestinations
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {destinations.map((destination) => (
+      {displayDestinations.map((destination: any) => (
         <Link
-          key={destination.slug}
-          href={`/destinations/${destination.slug}`}
-          className="relative h-80 rounded-lg overflow-hidden group"
+          key={destination._id}
+          href={`/destinations/${destination.slug?.current || destination.slug}`}
+          className="group relative h-80 rounded-lg overflow-hidden"
         >
           <Image
-            src={destination.image}
+            src={destination.imageUrl}
             alt={destination.name}
             fill
             className="object-cover group-hover:scale-110 transition-transform duration-300"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-            <h3 className="text-3xl font-serif mb-2">{destination.name}</h3>
-            <p className="text-sand-100">{destination.villaCount} Villas Available</p>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
+            <h3 className="text-3xl font-serif text-white mb-2 font-light">
+              {destination.name}
+            </h3>
+            <p className="text-white/90">
+              {destination.villaCount} Villas Available
+            </p>
           </div>
         </Link>
       ))}

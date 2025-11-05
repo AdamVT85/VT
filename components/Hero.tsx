@@ -1,6 +1,11 @@
 import Image from 'next/image'
 
-export default function Hero() {
+interface HeroProps {
+  title?: string
+  subtitle?: string
+}
+
+export default function Hero({ title, subtitle }: HeroProps) {
   return (
     <div className="relative h-[600px] bg-gray-900">
       <div className="absolute inset-0">
@@ -16,10 +21,10 @@ export default function Hero() {
       <div className="relative h-full flex items-center justify-center">
         <div className="text-center text-white px-4 max-w-4xl">
           <h1 className="text-5xl md:text-6xl font-serif mb-6 font-light">
-            The Art of the Mediterranean
+            {title || "The Art of the Mediterranean"}
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-stone-light font-light">
-            Handpicked villas with private pools in beautiful destinations
+            {subtitle || "Handpicked villas with private pools in beautiful destinations"}
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <a href="/villas" className="bg-terracotta text-white px-8 py-3 rounded-md hover:bg-terracotta-dark transition-colors font-medium">
