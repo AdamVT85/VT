@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vintage Travel | The Art of the Mediterranean</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #1f2937;
+            line-height: 1.6;
+            background: #E8DDD0;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Crimson Pro', Georgia, 'Times New Roman', serif;
+            font-weight: 300;
+        }
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        /* Header */
+        .header-top {
+            background: #C85A3C;
+            color: white;
+            padding: 0.5rem 0;
+        }
+        
+        .header-top .container {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1.5rem;
+            font-size: 0.875rem;
+        }
+        
+        .header-top a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.2s;
+        }
+        
+        .header-top a:hover {
+            color: #E8DDD0;
+        }
+        
+        .header-main {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        
+        .header-main .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #C85A3C;
+            font-family: 'Crimson Pro', serif;
+            letter-spacing: 0.05em;
+        }
+        
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        nav a {
+            color: #374151;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        nav a:hover {
+            color: #C85A3C;
+        }
+        
+        /* Hero */
+        .hero {
+            position: relative;
+            height: 600px;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&h=600&fit=crop') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 0.75rem 2rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: #C85A3C;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #B04A2C;
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #C85A3C;
+        }
+        
+        .btn-secondary:hover {
+            background: #E8DDD0;
+        }
+        
+        /* Search Bar */
+        .search-section {
+            position: relative;
+            margin-top: -2rem;
+            z-index: 10;
+        }
+        
+        .search-card {
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+        }
+        
+        .search-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #374151;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.5rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #C85A3C;
+            box-shadow: 0 0 0 3px rgba(200, 90, 60, 0.1);
+        }
+        
+        .btn-search {
+            width: 100%;
+            background: #C85A3C;
+            color: white;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .btn-search:hover {
+            background: #B04A2C;
+        }
+        
+        /* Sections */
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-white {
+            background: white;
+        }
+        
+        .section-stone {
+            background: #E8DDD0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section-header p {
+            font-size: 1.125rem;
+            color: #6b7280;
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+        
+        /* Villa Grid */
+        .villa-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .villa-card {
+            background: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: box-shadow 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .villa-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+        }
+        
+        .villa-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .villa-card:hover .villa-image {
+            transform: scale(1.05);
+        }
+        
+        .villa-content {
+            padding: 1rem;
+        }
+        
+        .villa-title {
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            font-family: 'Crimson Pro', serif;
+            color: #1f2937;
+            transition: color 0.2s;
+        }
+        
+        .villa-card:hover .villa-title {
+            color: #C85A3C;
+        }
+        
+        .villa-location {
+            color: #6b7280;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        
+        .villa-details {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+        
+        .villa-price {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #C85A3C;
+        }
+        
+        .villa-price-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+            font-weight: normal;
+        }
+        
+        /* Destinations Grid */
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .destination-card {
+            position: relative;
+            height: 320px;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+        
+        .destination-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .destination-card:hover .destination-image {
+            transform: scale(1.1);
+        }
+        
+        .destination-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+        }
+        
+        .destination-name {
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            font-family: 'Crimson Pro', serif;
+        }
+        
+        .destination-count {
+            opacity: 0.9;
+        }
+        
+        /* Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature {
+            text-align: center;
+        }
+        
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background: #E6A89C;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: #C85A3C;
+            font-size: 2rem;
+        }
+        
+        .feature h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            font-family: 'Crimson Pro', serif;
+            font-weight: 500;
+        }
+        
+        .feature p {
+            color: #6b7280;
+        }
+        
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .testimonial {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .stars {
+            color: #F5B445;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: #374151;
+        }
+        
+        .testimonial-author {
+            border-top: 1px solid #e5e7eb;
+            padding-top: 1rem;
+        }
+        
+        .author-name {
+            font-weight: 600;
+            color: #1f2937;
+        }
+        
+        .author-location {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+        
+        .author-villa {
+            font-size: 0.875rem;
+            color: #C85A3C;
+            margin-top: 0.25rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: #C85A3C;
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 42rem;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+        }
+        
+        /* Footer */
+        footer {
+            background: #3D4A3A;
+            color: #d1d5db;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            color: white;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            font-family: 'Crimson Pro', serif;
+            font-weight: 500;
+        }
+        
+        .footer-section p {
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section a {
+            color: #d1d5db;
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.2s;
+        }
+        
+        .footer-section a:hover {
+            color: #E6A89C;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #4E5C4B;
+            padding-top: 1.5rem;
+            text-align: center;
+            font-size: 0.875rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .search-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <a href="tel:+441954261431">📞 01954 261 431</a>
+                <a href="mailto:holidays@vintagetravel.co.uk">✉️ holidays@vintagetravel.co.uk</a>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container">
+                <div class="logo">VINTAGE TRAVEL</div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#villas">Villas</a></li>
+                        <li><a href="#destinations">Destinations</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <div class="hero">
+        <div>
+            <h1>The Art of the Mediterranean</h1>
+            <p>Handpicked villas with private pools in beautiful destinations</p>
+            <div class="btn-group">
+                <a href="#villas" class="btn btn-primary">Explore Villas</a>
+                <a href="#destinations" class="btn btn-secondary">View Destinations</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-section">
+        <div class="container">
+            <div class="search-card">
+                <div class="search-grid">
+                    <div class="form-group">
+                        <label>Destination</label>
+                        <select class="form-control">
+                            <option>All Destinations</option>
+                            <option>Spain</option>
+                            <option>France</option>
+                            <option>Italy</option>
+                            <option>Greece</option>
+                            <option>Portugal</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Check In</label>
+                        <input type="date" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Check Out</label>
+                        <input type="date" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Guests</label>
+                        <select class="form-control">
+                            <option>Select guests</option>
+                            <option>2 Guests</option>
+                            <option>4 Guests</option>
+                            <option>6 Guests</option>
+                            <option>8+ Guests</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn-search">Search Villas</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Villas -->
+    <section class="section-stone" id="villas">
+        <div class="container">
+            <div class="section-header">
+                <h2>Carefully Chosen Villas</h2>
+                <p>We personally visit every property, know every location, and care deeply about matching people with the holiday that's right for them</p>
+            </div>
+            <div class="villa-grid">
+                <a href="#" class="villa-card">
+                    <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&h=600&fit=crop" alt="Villa Solana" class="villa-image">
+                    <div class="villa-content">
+                        <h3 class="villa-title">Villa Solana</h3>
+                        <p class="villa-location">Mallorca, Spain</p>
+                        <div class="villa-details">
+                            <span>🛏️ 4</span>
+                            <span>👥 8</span>
+                        </div>
+                        <div class="villa-price">
+                            £1,250 <span class="villa-price-label">per week</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="villa-card">
+                    <img src="https://images.unsplash.com/photo-1602343168117-bb8ffe3e2e9f?w=800&h=600&fit=crop" alt="Casa Rustica" class="villa-image">
+                    <div class="villa-content">
+                        <h3 class="villa-title">Casa Rustica</h3>
+                        <p class="villa-location">Tuscany, Italy</p>
+                        <div class="villa-details">
+                            <span>🛏️ 5</span>
+                            <span>👥 10</span>
+                        </div>
+                        <div class="villa-price">
+                            £1,850 <span class="villa-price-label">per week</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="villa-card">
+                    <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&h=600&fit=crop" alt="Villa Azure" class="villa-image">
+                    <div class="villa-content">
+                        <h3 class="villa-title">Villa Azure</h3>
+                        <p class="villa-location">Santorini, Greece</p>
+                        <div class="villa-details">
+                            <span>🛏️ 3</span>
+                            <span>👥 6</span>
+                        </div>
+                        <div class="villa-price">
+                            £2,100 <span class="villa-price-label">per week</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="villa-card">
+                    <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=800&h=600&fit=crop" alt="Maison Lavande" class="villa-image">
+                    <div class="villa-content">
+                        <h3 class="villa-title">Maison Lavande</h3>
+                        <p class="villa-location">Provence, France</p>
+                        <div class="villa-details">
+                            <span>🛏️ 4</span>
+                            <span>👥 8</span>
+                        </div>
+                        <div class="villa-price">
+                            £1,650 <span class="villa-price-label">per week</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations -->
+    <section class="section-white" id="destinations">
+        <div class="container">
+            <div class="section-header">
+                <h2>Discover the True Mediterranean</h2>
+                <p>From sun-warmed terracotta and the scents of a garden at dusk, to morning rituals of fresh bread and coffee</p>
+            </div>
+            <div class="destinations-grid">
+                <a href="#" class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=800&h=600&fit=crop" alt="Spain" class="destination-image">
+                    <div class="destination-overlay">
+                        <h3 class="destination-name">Spain</h3>
+                        <p class="destination-count">145 Villas Available</p>
+                    </div>
+                </a>
+                <a href="#" class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&h=600&fit=crop" alt="France" class="destination-image">
+                    <div class="destination-overlay">
+                        <h3 class="destination-name">France</h3>
+                        <p class="destination-count">98 Villas Available</p>
+                    </div>
+                </a>
+                <a href="#" class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=800&h=600&fit=crop" alt="Italy" class="destination-image">
+                    <div class="destination-overlay">
+                        <h3 class="destination-name">Italy</h3>
+                        <p class="destination-count">112 Villas Available</p>
+                    </div>
+                </a>
+                <a href="#" class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=800&h=600&fit=crop" alt="Greece" class="destination-image">
+                    <div class="destination-overlay">
+                        <h3 class="destination-name">Greece</h3>
+                        <p class="destination-count">87 Villas Available</p>
+                    </div>
+                </a>
+                <a href="#" class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=800&h=600&fit=crop" alt="Portugal" class="destination-image">
+                    <div class="destination-overlay">
+                        <h3 class="destination-name">Portugal</h3>
+                        <p class="destination-count">64 Villas Available</p>
+                    </div>
+                </a>
+                <a href="#" class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1605106901227-991bd663255c?w=800&h=600&fit=crop" alt="Croatia" class="destination-image">
+                    <div class="destination-overlay">
+                        <h3 class="destination-name">Croatia</h3>
+                        <p class="destination-count">45 Villas Available</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="section-white">
+        <div class="container">
+            <div class="section-header">
+                <h2>The Art of the Mediterranean</h2>
+                <p>Inspired by our destinations, everything we do is influenced by the authenticity, character, and warmth of the Mediterranean</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">❤️</div>
+                    <h3>Warm Welcomes</h3>
+                    <p>Trusted advice, personal service, and people who care</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📍</div>
+                    <h3>Authentic Experiences</h3>
+                    <p>A sincere desire to share the true character of our destinations</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🏠</div>
+                    <h3>Quality Villas</h3>
+                    <p>Carefully chosen properties - and time taken to do things well</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">👥</div>
+                    <h3>Expert Local Knowledge</h3>
+                    <p>Our team regularly visits all destinations</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Award Winning</h3>
+                    <p>Telegraph's Best Villa Operator</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⏰</div>
+                    <h3>Year-Round Support</h3>
+                    <p>Local representatives in all destinations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section-stone">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Guests Say</h2>
+                <p>Read reviews from our satisfied guests</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"We had the most wonderful week at Villa Solana. The property was exactly as described, beautifully maintained, and the local rep was incredibly helpful. We will definitely be booking again!"</p>
+                    <div class="testimonial-author">
+                        <p class="author-name">Sarah Johnson</p>
+                        <p class="author-location">London, UK</p>
+                        <p class="author-villa">Villa Solana, Mallorca</p>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Vintage Travel made our family holiday absolutely perfect. The booking process was straightforward, and the villa exceeded our expectations. The location was peaceful yet close to local amenities."</p>
+                    <div class="testimonial-author">
+                        <p class="author-name">Michael Davies</p>
+                        <p class="author-location">Manchester, UK</p>
+                        <p class="author-villa">Casa Rustica, Tuscany</p>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"This was our third time booking with Vintage Travel and they never disappoint. The attention to detail, quality of properties, and excellent customer service keeps us coming back year after year."</p>
+                    <div class="testimonial-author">
+                        <p class="author-name">Emma Thompson</p>
+                        <p class="author-location">Edinburgh, UK</p>
+                        <p class="author-villa">Villa Azure, Santorini</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Find Your Perfect Villa?</h2>
+            <p>Speak to our expert team who can guide you to your ideal holiday home, with the warmth and personal service we're known for</p>
+            <div class="btn-group">
+                <a href="#villas" class="btn btn-secondary">Browse All Villas</a>
+                <a href="#contact" class="btn" style="border: 2px solid white; color: white;">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>VINTAGE TRAVEL</h3>
+                    <p>Handpicked villas with private pools across the Mediterranean. The art of the Mediterranean since 1990.</p>
+                    <div class="social-links">
+                        <a href="#">📘</a>
+                        <a href="#">📷</a>
+                        <a href="#">🐦</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#villas">Browse Villas</a></li>
+                        <li><a href="#destinations">Destinations</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Popular Destinations</h3>
+                    <ul>
+                        <li><a href="#">Spain</a></li>
+                        <li><a href="#">France</a></li>
+                        <li><a href="#">Italy</a></li>
+                        <li><a href="#">Greece</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>📍 Barton Road, Comberton<br>Cambridge CB23 7BA</li>
+                        <li>📞 <a href="tel:+441954261431">01954 261 431</a></li>
+                        <li>✉️ <a href="mailto:holidays@vintagetravel.co.uk">holidays@vintagetravel.co.uk</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Vintage Travel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
